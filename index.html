@@ -57,24 +57,37 @@
     opacity: 0.9;
   }
 
-  #lang-bar .nav-cta {
+  #lang-bar .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  #lang-bar .main-nav a {
     font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.67rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.6);
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 7px 18px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 3px;
     transition: all 0.2s;
     white-space: nowrap;
   }
-  #lang-bar .nav-cta:hover {
+  #lang-bar .main-nav a:hover {
     color: #fff;
-    border-color: rgba(255,255,255,0.6);
     background: rgba(255,255,255,0.08);
+  }
+  #lang-bar .main-nav a.goals-link {
+    color: #D4AF70;
+    border: 1px solid rgba(212,175,112,0.35);
+    margin-left: 0.5rem;
+  }
+  #lang-bar .main-nav a.goals-link:hover {
+    color: #e8c97a;
+    border-color: rgba(212,175,112,0.7);
+    background: rgba(212,175,112,0.08);
   }
 
   #lang-bar nav {
@@ -744,6 +757,7 @@
   @media (max-width: 900px) {
     section { padding: 4rem 1.5rem; }
     #lang-bar { padding: 0 1.5rem; }
+    #lang-bar .main-nav { display: none; }
     #hero-content { padding: 0 1.5rem 3rem; }
 
     .about-grid,
@@ -776,12 +790,50 @@
     <span class="l en">Amelie Hansen</span>
     <span class="l fr">Amelie Hansen</span>
   </span>
-  <a href="#goals" class="nav-cta">
-    <span class="l de">Was ich suche</span>
-    <span class="l es">Lo que busco</span>
-    <span class="l en">What I'm looking for</span>
-    <span class="l fr">Ce que je cherche</span>
-  </a>
+  <div class="main-nav">
+    <a href="#about">
+      <span class="l de">Über mich</span>
+      <span class="l es">Sobre mí</span>
+      <span class="l en">About</span>
+      <span class="l fr">À propos</span>
+    </a>
+    <a href="#disciplines">
+      <span class="l de">Disziplinen</span>
+      <span class="l es">Disciplinas</span>
+      <span class="l en">Disciplines</span>
+      <span class="l fr">Disciplines</span>
+    </a>
+    <a href="#horses">
+      <span class="l de">Pferde</span>
+      <span class="l es">Caballos</span>
+      <span class="l en">Horses</span>
+      <span class="l fr">Chevaux</span>
+    </a>
+    <a href="#gallery">
+      <span class="l de">Galerie</span>
+      <span class="l es">Galería</span>
+      <span class="l en">Gallery</span>
+      <span class="l fr">Galerie</span>
+    </a>
+    <a href="#videos">
+      <span class="l de">Videos</span>
+      <span class="l es">Vídeos</span>
+      <span class="l en">Videos</span>
+      <span class="l fr">Vidéos</span>
+    </a>
+    <a href="#goals" class="goals-link">
+      <span class="l de">Was ich suche</span>
+      <span class="l es">Lo que busco</span>
+      <span class="l en">What I'm looking for</span>
+      <span class="l fr">Ce que je cherche</span>
+    </a>
+    <a href="#contact">
+      <span class="l de">Kontakt</span>
+      <span class="l es">Contacto</span>
+      <span class="l en">Contact</span>
+      <span class="l fr">Contact</span>
+    </a>
+  </div>
   <nav>
     <button class="lang-btn active" onclick="setLang('de')">DE</button>
     <button class="lang-btn" onclick="setLang('es')">ES</button>
