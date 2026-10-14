@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amelie Hansen — Rider Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='82' font-size='85'>🐎</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -89,9 +90,11 @@
   body.lang-de  .l.de  { display: initial; }
   body.lang-es  .l.es  { display: initial; }
   body.lang-en  .l.en  { display: initial; }
+  body.lang-fr  .l.fr  { display: initial; }
   body.lang-de  .lb.de { display: block; }
   body.lang-es  .lb.es { display: block; }
   body.lang-en  .lb.en { display: block; }
+  body.lang-fr  .lb.fr { display: block; }
   .lb { display: none; }
 
   /* ─── HERO ─────────────────────────────────────────────────── */
@@ -761,6 +764,7 @@
     <button class="lang-btn active" onclick="setLang('de')">DE</button>
     <button class="lang-btn" onclick="setLang('es')">ES</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
   </nav>
 </div>
 
@@ -773,18 +777,21 @@
       <span class="l de">Springreiterin · Mallorca</span>
       <span class="l es">Amazona · Salto · Mallorca</span>
       <span class="l en">Show Jumper · Mallorca</span>
+      <span class="l fr">Cavalière · Saut d'obstacles · Majorque</span>
     </p>
     <h1>Amelie<br>Hansen</h1>
     <p class="tagline">
       <span class="l de">Solide Wettkampferfahrung, vier eigene Pferde und ein klares Ziel: den nächsten Schritt machen — in einem erstklassigen Stall, der mich fordert und formt.</span>
       <span class="l es">Experiencia competitiva sólida, cuatro caballos propios y un objetivo claro: dar el siguiente paso — en una cuadra de élite que me exija y me forme.</span>
       <span class="l en">Solid competition experience, four horses of my own and a clear goal: to take the next step — in a top stable that challenges and shapes me.</span>
+      <span class="l fr">Une solide expérience en compétition, quatre chevaux bien à moi et un objectif clair : passer à l'étape suivante — dans une écurie d'élite qui me pousse et me forge.</span>
     </p>
     <div class="scroll-hint">
       <span class="scroll-line"></span>
       <span class="l de">Mehr erfahren</span>
       <span class="l es">Conocer más</span>
       <span class="l en">Discover more</span>
+      <span class="l fr">Découvrir</span>
     </div>
   </div>
   <span class="photo-credit">© Bruno Fragean</span>
@@ -802,11 +809,13 @@
           <span class="l de">Über mich</span>
           <span class="l es">Sobre mí</span>
           <span class="l en">About me</span>
+          <span class="l fr">À propos</span>
         </p>
         <h2 class="section-title">
           <span class="l de">Reiten ist nicht<br>mein Hobby —<br>es ist mein Leben.</span>
           <span class="l es">Montar no es<br>mi hobby —<br>es mi vida.</span>
           <span class="l en">Riding is not<br>my hobby —<br>it is my life.</span>
+          <span class="l fr">Monter n'est pas<br>mon hobby —<br>c'est ma vie.</span>
         </h2>
         <div class="divider"></div>
 
@@ -831,6 +840,13 @@
           <p>I am prepared to work for it. Hard, consistently, every single day. I am not looking for an easy path — I am looking for the right one.</p>
         </div>
 
+        <!-- FR -->
+        <div class="lb fr">
+          <p>J'ai 23 ans, je suis allemande — et j'ai grandi à Majorque depuis l'enfance. Quadrilingue, élevée sur l'île, avec la mer dans le dos et un cheval sous moi aussi loin que je m'en souvienne : je monte depuis l'âge de quatre ans.</p>
+          <p>Quatre chevaux bien à moi — dont trois que j'ai élevés moi-même — un entraînement quotidien et une participation régulière à des concours en niveau régional : c'est ma base. Ce que je cherche, c'est le prochain chapitre : un environnement professionnel où je peux amener mes chevaux et moi-même à un niveau supérieur.</p>
+          <p>Je suis prête à travailler dur pour cela. Avec rigueur et constance, chaque jour. Je ne cherche pas le chemin facile — je cherche le bon.</p>
+        </div>
+
         <div class="stats-grid">
           <div class="stat-item">
             <div class="stat-value">19</div>
@@ -838,6 +854,7 @@
               <span class="l de">Jahre im Sattel</span>
               <span class="l es">Años en la silla</span>
               <span class="l en">Years in the saddle</span>
+              <span class="l fr">Années en selle</span>
             </div>
           </div>
           <div class="stat-item">
@@ -846,6 +863,7 @@
               <span class="l de">Pferde</span>
               <span class="l es">Caballos</span>
               <span class="l en">Horses</span>
+              <span class="l fr">Chevaux</span>
             </div>
           </div>
           <div class="stat-item">
@@ -854,6 +872,7 @@
               <span class="l de">Turnierplatzierungen</span>
               <span class="l es">Clasificaciones en concurso</span>
               <span class="l en">Competition placings</span>
+              <span class="l fr">Classements en concours</span>
             </div>
           </div>
           <div class="stat-item">
@@ -862,6 +881,7 @@
               <span class="l de">Aktuelle Parcourshöhe</span>
               <span class="l es">Altura actual de competición</span>
               <span class="l en">Current competition height</span>
+              <span class="l fr">Hauteur actuelle</span>
             </div>
           </div>
         </div>
@@ -877,11 +897,13 @@
       <span class="l de">Disziplinen</span>
       <span class="l es">Disciplinas</span>
       <span class="l en">Disciplines</span>
+      <span class="l fr">Disciplines</span>
     </p>
     <h2 class="section-title">
       <span class="l de">Sprung & Dressur</span>
       <span class="l es">Salto y doma</span>
       <span class="l en">Jumping & Dressage</span>
+      <span class="l fr">Saut & Dressage</span>
     </h2>
     <div class="divider"></div>
   </div>
@@ -895,16 +917,19 @@
             <span class="l de">Hauptdisziplin</span>
             <span class="l es">Disciplina principal</span>
             <span class="l en">Main discipline</span>
+            <span class="l fr">Discipline principale</span>
           </div>
           <div class="disc-name">
             <span class="l de">Springreiten</span>
             <span class="l es">Salto de obstáculos</span>
             <span class="l en">Show Jumping</span>
+            <span class="l fr">Saut d'obstacles</span>
           </div>
           <div class="disc-detail">
             <span class="l de">Aktuelle Höhe: <span class="placeholder">[X,XX m]</span> · Nationale Turniere</span>
             <span class="l es">Altura actual: <span class="placeholder">[X,XX m]</span> · Concursos nacionales</span>
             <span class="l en">Current height: <span class="placeholder">[X,XX m]</span> · National competitions</span>
+            <span class="l fr">Hauteur actuelle : <span class="placeholder">[X,XX m]</span> · Concours nationaux</span>
           </div>
         </div>
       </div>
@@ -915,16 +940,19 @@
             <span class="l de">Ergänzungsdisziplin</span>
             <span class="l es">Disciplina complementaria</span>
             <span class="l en">Secondary discipline</span>
+            <span class="l fr">Discipline complémentaire</span>
           </div>
           <div class="disc-name">
             <span class="l de">Dressur</span>
             <span class="l es">Doma clásica</span>
             <span class="l en">Dressage</span>
+            <span class="l fr">Dressage</span>
           </div>
           <div class="disc-detail">
             <span class="l de">Klassische Ausbildung als Basis</span>
             <span class="l es">Formación clásica como base</span>
             <span class="l en">Classical training as foundation</span>
+            <span class="l fr">Formation classique comme base</span>
           </div>
         </div>
       </div>
@@ -939,16 +967,19 @@
       <span class="l de">Meine Pferde</span>
       <span class="l es">Mis caballos</span>
       <span class="l en">My horses</span>
+      <span class="l fr">Mes chevaux</span>
     </p>
     <h2 class="section-title">
       <span class="l de">Vier Partner</span>
       <span class="l es">Cuatro socios</span>
       <span class="l en">Four partners</span>
+      <span class="l fr">Quatre partenaires</span>
     </h2>
     <div class="divider"></div>
     <div class="lb de horses-intro">Winphonie ist meine erfahrene Hauptstute — KWPN, geprüfte Springerin. Die anderen drei habe ich selbst auf Mallorca gezüchtet: zwei Westfalen und ein weiterer KWPN aus Winphonies Linie. Ich reite, trainiere und entwickle sie alle selbst.</div>
     <div class="lb es horses-intro">Winphonie es mi yegua principal con experiencia — KWPN, amazona de salto acreditada. Los otros tres los he criado yo misma en Mallorca: dos westfalianos y otro KWPN de la línea de Winphonie. Yo los monto, entreno y desarrollo a todos.</div>
     <div class="lb en horses-intro">Winphonie is my experienced main mare — KWPN, a proven show jumper. The other three I bred myself in Mallorca: two Westphalians and another KWPN from Winphonie's line. I ride, train and develop all of them myself.</div>
+    <div class="lb fr horses-intro">Winphonie est ma jument principale expérimentée — KWPN, cavalière de saut éprouvée. Les trois autres, je les ai élevés moi-même à Majorque : deux Westphaliens et un autre KWPN issu de la lignée de Winphonie. Je les monte, entraîne et développe tous moi-même.</div>
 
     <div class="horses-grid">
 
@@ -958,42 +989,43 @@
         <div class="horse-meta">
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span><span class="l fr">Race</span>
             </span>
             <span class="horse-meta-val">KWPN (NL)</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span><span class="l fr">Robe</span>
             </span>
             <span class="horse-meta-val">Braun</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span><span class="l fr">Né(e)</span>
             </span>
             <span class="horse-meta-val">2003</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span><span class="l fr">Ascendance</span>
             </span>
             <span class="horse-meta-val">Rash R × Symphonie</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Prädikate</span><span class="l es">Predicados</span><span class="l en">Predicates</span>
+              <span class="l de">Prädikate</span><span class="l es">Predicados</span><span class="l en">Predicates</span><span class="l fr">Prédicats</span>
             </span>
             <span class="horse-meta-val">IBOP-SPR · PROK · Springpaard</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Rolle</span><span class="l es">Rol</span><span class="l en">Role</span>
+              <span class="l de">Rolle</span><span class="l es">Rol</span><span class="l en">Role</span><span class="l fr">Rôle</span>
             </span>
             <span class="horse-meta-val">
               <span class="l de">Hauptturnierpferd · Mutterstute</span>
               <span class="l es">Caballo de competición principal · Yegua madre</span>
               <span class="l en">Main competition horse · Broodmare</span>
+              <span class="l fr">Jument de compétition principale · Poulinière</span>
             </span>
           </div>
         </div>
@@ -1005,35 +1037,36 @@
         <div class="horse-meta">
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span><span class="l fr">Race</span>
             </span>
             <span class="horse-meta-val">Westfale</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span><span class="l fr">Robe</span>
             </span>
             <span class="horse-meta-val">
               <span class="l de">Dunkelbraun / werdender Schimmel</span>
               <span class="l es">Castaño oscuro / tordo en formación</span>
               <span class="l en">Dark bay / greying</span>
+              <span class="l fr">Bai foncé / grisonnant</span>
             </span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span><span class="l fr">Né(e)</span>
             </span>
             <span class="horse-meta-val">2023 · Mallorca</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span><span class="l fr">Ascendance</span>
             </span>
             <span class="horse-meta-val">Donthargos × Aires de Fantasia</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Züchterin</span><span class="l es">Criadora</span><span class="l en">Breeder</span>
+              <span class="l de">Züchterin</span><span class="l es">Criadora</span><span class="l en">Breeder</span><span class="l fr">Éleveuse</span>
             </span>
             <span class="horse-meta-val">Amelie Hansen</span>
           </div>
@@ -1046,31 +1079,31 @@
         <div class="horse-meta">
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span><span class="l fr">Race</span>
             </span>
             <span class="horse-meta-val">KWPN (NL)</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span><span class="l fr">Robe</span>
             </span>
             <span class="horse-meta-val">Braun</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span><span class="l fr">Né(e)</span>
             </span>
             <span class="horse-meta-val">2024 · Mallorca</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span><span class="l fr">Ascendance</span>
             </span>
             <span class="horse-meta-val">Cartier Class Z × Winphonie</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Züchterin</span><span class="l es">Criadora</span><span class="l en">Breeder</span>
+              <span class="l de">Züchterin</span><span class="l es">Criadora</span><span class="l en">Breeder</span><span class="l fr">Éleveuse</span>
             </span>
             <span class="horse-meta-val">Amelie Hansen</span>
           </div>
@@ -1083,29 +1116,30 @@
         <div class="horse-meta">
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span><span class="l fr">Race</span>
             </span>
             <span class="horse-meta-val">Westfale</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span><span class="l fr">Robe</span>
             </span>
             <span class="horse-meta-val">
               <span class="l de">Dunkelbraun / werdender Schimmel</span>
               <span class="l es">Castaño oscuro / tordo en formación</span>
               <span class="l en">Dark bay / greying</span>
+              <span class="l fr">Bai foncé / grisonnant</span>
             </span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span><span class="l fr">Né(e)</span>
             </span>
             <span class="horse-meta-val">2024 · Mallorca</span>
           </div>
           <div class="horse-meta-row">
             <span class="horse-meta-key">
-              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span><span class="l fr">Ascendance</span>
             </span>
             <span class="horse-meta-val">Donthargos × Aires de Fantasia</span>
           </div>
@@ -1117,6 +1151,7 @@
               <span class="l de">Vollgeschwister von For Thargos</span>
               <span class="l es">Hermana completa de For Thargos</span>
               <span class="l en">Full sibling of For Thargos</span>
+              <span class="l fr">Pleine sœur de For Thargos</span>
             </span>
           </div>
         </div>
@@ -1133,11 +1168,13 @@
       <span class="l de">Galerie</span>
       <span class="l es">Galería</span>
       <span class="l en">Gallery</span>
+      <span class="l fr">Galerie</span>
     </p>
     <h2 class="section-title">
       <span class="l de">In Aktion</span>
       <span class="l es">En acción</span>
       <span class="l en">In action</span>
+      <span class="l fr">En action</span>
     </h2>
     <div class="divider"></div>
   </div>
@@ -1199,16 +1236,19 @@
       <span class="l de">Videos</span>
       <span class="l es">Vídeos</span>
       <span class="l en">Videos</span>
+      <span class="l fr">Vidéos</span>
     </p>
     <h2 class="section-title">
       <span class="l de">Bewegte Bilder</span>
       <span class="l es">En movimiento</span>
       <span class="l en">Moving pictures</span>
+      <span class="l fr">En mouvement</span>
     </h2>
     <div class="divider"></div>
     <div class="lb de videos-intro">Ausschnitte aus Training und Turnier. Alle Videos stammen aus dem realen Turnierbetrieb und Trainingsalltag.</div>
     <div class="lb es videos-intro">Extractos de entrenamiento y competición. Todos los vídeos provienen del trabajo diario real.</div>
     <div class="lb en videos-intro">Highlights from training and competition. All footage is from real-life competition and daily training.</div>
+    <div class="lb fr videos-intro">Extraits d'entraînement et de compétition. Toutes les vidéos proviennent du travail quotidien réel.</div>
 
     <div class="videos-grid">
       <div class="video-wrap">
@@ -1262,11 +1302,13 @@
       <span class="l de">Was ich suche</span>
       <span class="l es">Lo que busco</span>
       <span class="l en">What I'm looking for</span>
+      <span class="l fr">Ce que je cherche</span>
     </p>
     <h2 class="section-title">
       <span class="l de">Der nächste Schritt</span>
       <span class="l es">El siguiente paso</span>
       <span class="l en">The next step</span>
+      <span class="l fr">La prochaine étape</span>
     </h2>
     <div class="divider" style="margin: 0 auto 1rem;"></div>
 
@@ -1282,6 +1324,7 @@
           <span class="l de">Ich suche einen Platz als Working Student oder Stage-Reiterin in einem professionellen Springpferdestall. Ich bringe vier eigene Pferde mit, volle Einsatzbereitschaft und den Willen, täglich dazuzulernen — von 3 Monaten bis langfristig.</span>
           <span class="l es">Busco un puesto como Working Student o amazona en prácticas en una cuadra de salto profesional. Traigo cuatro caballos propios, plena disponibilidad y ganas de aprender cada día — de 3 meses a largo plazo.</span>
           <span class="l en">I am looking for a working student or stage position at a professional show jumping stable. I bring four horses of my own, full commitment and the drive to learn every day — from 3 months to long-term.</span>
+          <span class="l fr">Je cherche un poste de Working Student ou de stagiaire dans une écurie de saut professionnelle. J'apporte quatre chevaux bien à moi, un engagement total et l'envie d'apprendre chaque jour — de 3 mois à long terme.</span>
         </div>
       </div>
       <div class="goal-card">
@@ -1295,6 +1338,7 @@
           <span class="l de">Ich komme von regionalen Turnieren und will mehr. Mein Ziel ist die nationale und perspektivisch internationale Klasse — mit den richtigen Menschen, dem richtigen Training und dem nötigen Ehrgeiz. Den bringe ich mit.</span>
           <span class="l es">Vengo de concursos regionales y quiero más. Mi objetivo es el nivel nacional y, a largo plazo, el internacional — con las personas adecuadas, el entrenamiento correcto y la ambición necesaria. Eso lo pongo yo.</span>
           <span class="l en">I come from regional competition and I want more. My goal is national level and, in time, international — with the right people, the right training and the necessary ambition. That I bring myself.</span>
+          <span class="l fr">Je viens des concours régionaux et je veux aller plus loin. Mon objectif est le niveau national et, à terme, international — avec les bonnes personnes, le bon entraînement et l'ambition nécessaire. Ça, je l'apporte moi-même.</span>
         </div>
       </div>
       <div class="goal-card">
@@ -1308,6 +1352,7 @@
           <span class="l de">Ab <span class="placeholder">[DATUM]</span> verfügbar. Aktuell in Mallorca, aber offen für jeden Standort — Deutschland, Spanien, Niederlande, Belgien oder anderswo. Die Pferde kommen mit.</span>
           <span class="l es">Disponible desde <span class="placeholder">[FECHA]</span>. Actualmente en Mallorca, pero abierta a cualquier ubicación — Alemania, España, Países Bajos, Bélgica o donde sea. Los caballos vienen conmigo.</span>
           <span class="l en">Available from <span class="placeholder">[DATE]</span>. Currently based in Mallorca, but open to any location — Germany, Spain, Netherlands, Belgium or elsewhere. The horses come too.</span>
+          <span class="l fr">Disponible à partir du <span class="placeholder">[DATE]</span>. Actuellement à Majorque, mais ouverte à tout endroit — Allemagne, Espagne, Pays-Bas, Belgique ou ailleurs. Les chevaux viennent avec moi.</span>
         </div>
       </div>
     </div>
@@ -1323,11 +1368,13 @@
           <span class="l de">Kontakt</span>
           <span class="l es">Contacto</span>
           <span class="l en">Contact</span>
+          <span class="l fr">Contact</span>
         </p>
         <h2 class="section-title">
           <span class="l de">Über ein Interesse<br>freue ich mich sehr.</span>
           <span class="l es">Cualquier interés<br>es bienvenido.</span>
           <span class="l en">I warmly welcome<br>any interest.</span>
+          <span class="l fr">Tout intérêt<br>est le bienvenu.</span>
         </h2>
         <div class="divider"></div>
         <div class="lb de">
@@ -1338,6 +1385,9 @@
         </div>
         <div class="lb en">
           <p>Whether a quick question, an invitation to visit or a first conversation — I am happy to respond promptly and without formality. By email, WhatsApp or simply by phone.</p>
+        </div>
+        <div class="lb fr">
+          <p>Qu'il s'agisse d'une question rapide, d'une invitation à se rencontrer ou d'une première conversation — je réponds volontiers et sans formalité. Par email, WhatsApp ou simplement par téléphone.</p>
         </div>
 
         <div class="contact-details">
@@ -1355,6 +1405,7 @@
                 <span class="l de">Telefon / WhatsApp</span>
                 <span class="l es">Teléfono / WhatsApp</span>
                 <span class="l en">Phone / WhatsApp</span>
+                <span class="l fr">Téléphone / WhatsApp</span>
               </strong>
               <span class="placeholder">[+34 / +49 ...]</span>
             </div>
@@ -1366,6 +1417,7 @@
                 <span class="l de">Standort</span>
                 <span class="l es">Ubicación</span>
                 <span class="l en">Location</span>
+                <span class="l fr">Lieu</span>
               </strong>
               <span class="placeholder">[Palma de Mallorca, España]</span>
             </div>
@@ -1393,6 +1445,7 @@
     <span class="l de">Amelie Hansen — Springreiterin · Mallorca</span>
     <span class="l es">Amelie Hansen — Amazona · Mallorca</span>
     <span class="l en">Amelie Hansen — Show Jumper · Mallorca</span>
+    <span class="l fr">Amelie Hansen — Cavalière · Majorque</span>
   </span>
   <span class="footer-credit">Foto: © Bruno Fragean</span>
 </footer>
@@ -1404,6 +1457,7 @@
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
     });
+    document.documentElement.lang = lang;
   }
 
   // ─── HERO PARALLAX / FADE-IN ─────────────────────────────────
