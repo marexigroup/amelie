@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[VORNAME] [NACHNAME] — Rider Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #111111;
+    --mid:      #555555;
+    --muted:    #888888;
+    --border:   #E0D8CF;
+    --cream:    #F7F3EE;
+    --warm:     #FDFAF6;
+    --gold:     #A07840;
+    --dark:     #0D1219;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── LANGUAGE SWITCHER ─────────────────────────────────────── */
+  #lang-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 56px;
+    background: rgba(13, 18, 25, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  #lang-bar .logo-text {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  #lang-bar nav {
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .lang-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.55);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .lang-btn:last-child { border-right: none; }
+  .lang-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+  .lang-btn.active { color: #fff; background: rgba(255,255,255,0.15); }
+
+  /* ─── SECTION ANCHOR OFFSET ────────────────────────────────── */
+  .anchor-offset { scroll-margin-top: 72px; }
+
+  /* ─── LANG VISIBILITY ─────────────────────────────────────── */
+  .l { display: none; }
+  body.lang-de  .l.de  { display: initial; }
+  body.lang-es  .l.es  { display: initial; }
+  body.lang-en  .l.en  { display: initial; }
+  body.lang-de  .lb.de { display: block; }
+  body.lang-es  .lb.es { display: block; }
+  body.lang-en  .lb.en { display: block; }
+  .lb { display: none; }
+
+  /* ─── HERO ─────────────────────────────────────────────────── */
+  #hero {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  #hero-img {
+    position: absolute;
+    inset: 0;
+    background: url('assets/img/img-11-bw-hero.jpg') center center / cover no-repeat;
+    filter: brightness(0.75);
+    transform: scale(1.02);
+    transition: transform 8s ease-out;
+  }
+  #hero-img.loaded { transform: scale(1); }
+
+  #hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.0) 40%,
+      rgba(0,0,0,0.55) 80%,
+      rgba(0,0,0,0.82) 100%
+    );
+  }
+
+  #hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 3rem 4.5rem;
+  }
+
+  #hero-content .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.85rem;
+  }
+
+  #hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+
+  #hero-content .tagline {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  #hero-content .scroll-hint {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.35);
+  }
+
+  .photo-credit {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── GENERIC SECTION ─────────────────────────────────────── */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ─── ABOUT ───────────────────────────────────────────────── */
+  #about {
+    background: var(--cream);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-photo {
+    position: relative;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: -20px;
+    bottom: -20px;
+    border: 1px solid var(--border);
+    z-index: -1;
+  }
+
+  .about-text p {
+    color: var(--mid);
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-item .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .placeholder {
+    display: inline-block;
+    background: #E8E0D5;
+    border-radius: 3px;
+    color: #999;
+    font-style: italic;
+    font-size: 0.9em;
+    padding: 1px 6px;
+  }
+
+  /* ─── DISCIPLINES ─────────────────────────────────────────── */
+  #disciplines {
+    background: var(--dark);
+    color: #fff;
+  }
+
+  #disciplines .section-title { color: #fff; }
+  #disciplines .divider { background: rgba(160,120,64,0.6); }
+
+  .disciplines-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2px;
+    margin-top: 3rem;
+  }
+
+  .discipline-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .discipline-card.secondary {
+    aspect-ratio: auto;
+  }
+
+  .discipline-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.65);
+    transition: filter 0.4s, transform 0.6s;
+  }
+
+  .discipline-card:hover img {
+    filter: brightness(0.75);
+    transform: scale(1.03);
+  }
+
+  .disc-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 2.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+  }
+
+  .disc-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  .disc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    font-weight: 400;
+  }
+
+  .disc-detail {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    margin-top: 0.35rem;
+    font-weight: 300;
+  }
+
+  /* ─── HORSES ──────────────────────────────────────────────── */
+  #horses {
+    background: var(--warm);
+  }
+
+  .horses-intro {
+    max-width: 620px;
+    color: var(--mid);
+    margin-bottom: 3.5rem;
+    font-size: 1.05rem;
+  }
+
+  .horses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .horse-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 2rem 2.25rem;
+    position: relative;
+  }
+
+  .horse-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .horse-card:hover::before { opacity: 1; }
+
+  .horse-number {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .horse-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .horse-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .horse-meta-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+
+  .horse-meta-key {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    min-width: 85px;
+  }
+
+  .horse-meta-val {
+    color: var(--mid);
+  }
+
+  /* ─── GALLERY ─────────────────────────────────────────────── */
+  #gallery {
+    background: #fff;
+    padding-bottom: 4rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: zoom-in;
+    position: relative;
+  }
+
+  .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.3s;
+    filter: brightness(0.95);
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.05);
+  }
+
+  /* ─── LIGHTBOX ────────────────────────────────────────────── */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  #lightbox.open { display: flex; }
+
+  #lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+
+  #lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  #lightbox-close:hover { color: #fff; }
+
+  #lightbox-nav {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .lb-nav-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+    border-radius: 2px;
+  }
+
+  .lb-nav-btn:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+  }
+
+  #lightbox-counter {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── VIDEOS ──────────────────────────────────────────────── */
+  #videos {
+    background: var(--cream);
+  }
+
+  .videos-intro {
+    max-width: 560px;
+    color: var(--mid);
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .video-wrap {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .video-wrap video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  /* ─── GOALS ───────────────────────────────────────────────── */
+  #goals {
+    background: var(--dark);
+    text-align: center;
+  }
+
+  #goals .section-title { color: #fff; }
+  #goals .divider { margin: 0 auto 2.5rem; }
+
+  #goals .section-label { justify-content: center; display: block; }
+
+  .goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 3.5rem;
+  }
+
+  .goal-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2.5rem 2rem;
+    text-align: left;
+  }
+
+  .goal-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .goal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .goal-text {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  /* ─── CONTACT ─────────────────────────────────────────────── */
+  #contact {
+    background: var(--warm);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-text p {
+    color: var(--mid);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-details {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  .contact-val {
+    color: var(--mid);
+  }
+
+  .contact-val strong {
+    color: var(--ink);
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+
+  .contact-photo {
+    position: relative;
+  }
+
+  .contact-photo img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────────────── */
+  footer {
+    background: var(--dark);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+  }
+
+  footer .footer-credit {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    section { padding: 4rem 1.5rem; }
+    #lang-bar { padding: 0 1.5rem; }
+    #hero-content { padding: 0 1.5rem 3rem; }
+
+    .about-grid,
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-photo::after { display: none; }
+
+    .disciplines-grid { grid-template-columns: 1fr; }
+    .discipline-card { aspect-ratio: 16/9; }
+    .discipline-card.secondary { aspect-ratio: 16/9; }
+
+    .horses-grid { grid-template-columns: 1fr; }
+
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:first-child { grid-column: span 1; grid-row: span 1; }
+
+    .videos-grid { grid-template-columns: 1fr; }
+    .goals-grid { grid-template-columns: 1fr; }
+
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body class="lang-de">
+
+<!-- ─── LANGUAGE BAR ─────────────────────────────────────────── -->
+<div id="lang-bar">
+  <span class="logo-text">
+    <span class="l de">[VORNAME] [NACHNAME]</span>
+    <span class="l es">[NOMBRE] [APELLIDO]</span>
+    <span class="l en">[FIRST NAME] [LAST NAME]</span>
+  </span>
+  <nav>
+    <button class="lang-btn active" onclick="setLang('de')">DE</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </nav>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section id="hero">
+  <div id="hero-img"></div>
+  <div id="hero-gradient"></div>
+  <div id="hero-content">
+    <p class="eyebrow">
+      <span class="l de">Springreiterin · Mallorca</span>
+      <span class="l es">Amazona · Salto · Mallorca</span>
+      <span class="l en">Show Jumper · Mallorca</span>
+    </p>
+    <h1>[VORNAME]<br>[NACHNAME]</h1>
+    <p class="tagline">
+      <span class="l de">Leidenschaft für den Springsport, Erfahrung auf höchstem nationalem Niveau — auf der Suche nach einem Ausbildungsplatz in einem erstklassigen Stall.</span>
+      <span class="l es">Pasión por el salto, experiencia en el nivel nacional — en busca de un puesto de formación en una cuadra de élite.</span>
+      <span class="l en">A passion for show jumping, experience at national level — seeking a training position at a world-class stable.</span>
+    </p>
+    <div class="scroll-hint">
+      <span class="scroll-line"></span>
+      <span class="l de">Mehr erfahren</span>
+      <span class="l es">Conocer más</span>
+      <span class="l en">Discover more</span>
+    </div>
+  </div>
+  <span class="photo-credit">© Bruno Fragean</span>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+<section id="about" class="anchor-offset">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="assets/img/img-06-dressage-grey.jpg" alt="Amelie — Dressur">
+      </div>
+      <div class="about-text">
+        <p class="section-label">
+          <span class="l de">Über mich</span>
+          <span class="l es">Sobre mí</span>
+          <span class="l en">About me</span>
+        </p>
+        <h2 class="section-title">
+          <span class="l de">Reiten ist nicht<br>mein Hobby —<br>es ist mein Leben.</span>
+          <span class="l es">Montar no es<br>mi hobby —<br>es mi vida.</span>
+          <span class="l en">Riding is not<br>my hobby —<br>it is my life.</span>
+        </h2>
+        <div class="divider"></div>
+
+        <!-- DE -->
+        <div class="lb de">
+          <p>Ich bin <span class="placeholder">[ALTER]</span> Jahre alt, <span class="placeholder">[NATIONALITÄT]</span>, und reite seit meinem <span class="placeholder">[Alter Anfang]</span>. Aufgewachsen mit Pferden, habe ich meine Ausbildung im Springsport und der klassischen Dressur verfolgt.</p>
+          <p>Meine Pferde sind meine Partner — ich arbeite täglich mit ihnen und nehme regelmäßig an <span class="placeholder">[regionalen / nationalen]</span> Turnieren teil. Derzeit bin ich in Mallorca ansässig und suche die nächste Stufe meiner reiterlichen Ausbildung.</p>
+          <p>Ich bin eine schnelle Lernerin, körperlich belastbar und bringe die Bereitschaft mit, jeden Tag alles zu geben. Was ich suche: ein Umfeld, das mich fordert und fördert.</p>
+        </div>
+
+        <!-- ES -->
+        <div class="lb es">
+          <p>Tengo <span class="placeholder">[EDAD]</span> años, soy <span class="placeholder">[NACIONALIDAD]</span> y monto desde los <span class="placeholder">[edad inicio]</span>. Crecí rodeada de caballos y he centrado mi formación en el salto de obstáculos y la doma clásica.</p>
+          <p>Mis caballos son mis socios — trabajo con ellos a diario y participo regularmente en concursos <span class="placeholder">[regionales / nacionales]</span>. Actualmente resido en Mallorca y busco el siguiente nivel en mi formación ecuestre.</p>
+          <p>Soy una aprendiz rápida, físicamente resistente y siempre dispuesta a dar el máximo cada día. Lo que busco: un entorno que me exija y me impulse.</p>
+        </div>
+
+        <!-- EN -->
+        <div class="lb en">
+          <p>I am <span class="placeholder">[AGE]</span> years old, <span class="placeholder">[NATIONALITY]</span>, and have been riding since the age of <span class="placeholder">[start age]</span>. I grew up with horses and have pursued training in show jumping and classical dressage.</p>
+          <p>My horses are my partners — I work with them every day and regularly compete at <span class="placeholder">[regional / national]</span> level. Currently based in Mallorca, I am seeking the next stage of my equestrian development.</p>
+          <p>I am a fast learner, physically resilient and fully committed. What I am looking for: an environment that challenges and develops me.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value"><span class="placeholder">[XX]</span></div>
+            <div class="stat-label">
+              <span class="l de">Jahre Erfahrung</span>
+              <span class="l es">Años de experiencia</span>
+              <span class="l en">Years experience</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">4</div>
+            <div class="stat-label">
+              <span class="l de">Pferde</span>
+              <span class="l es">Caballos</span>
+              <span class="l en">Horses</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value"><span class="placeholder">[XX]</span></div>
+            <div class="stat-label">
+              <span class="l de">Turniersiege</span>
+              <span class="l es">Victorias en concurso</span>
+              <span class="l en">Competition wins</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value"><span class="placeholder">[X,XX m]</span></div>
+            <div class="stat-label">
+              <span class="l de">Aktuelle Parcourshöhe</span>
+              <span class="l es">Altura actual de competición</span>
+              <span class="l en">Current competition height</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DISCIPLINES ────────────────────────────────────────────── -->
+<section id="disciplines" class="anchor-offset">
+  <div class="section-inner">
+    <p class="section-label">
+      <span class="l de">Disziplinen</span>
+      <span class="l es">Disciplinas</span>
+      <span class="l en">Disciplines</span>
+    </p>
+    <h2 class="section-title">
+      <span class="l de">Sprung & Dressur</span>
+      <span class="l es">Salto y doma</span>
+      <span class="l en">Jumping & Dressage</span>
+    </h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="section-inner">
+    <div class="disciplines-grid">
+      <div class="discipline-card">
+        <img src="assets/img/img-08-jump-flags.jpg" alt="Show Jumping">
+        <div class="disc-label">
+          <div class="disc-tag">
+            <span class="l de">Hauptdisziplin</span>
+            <span class="l es">Disciplina principal</span>
+            <span class="l en">Main discipline</span>
+          </div>
+          <div class="disc-name">
+            <span class="l de">Springreiten</span>
+            <span class="l es">Salto de obstáculos</span>
+            <span class="l en">Show Jumping</span>
+          </div>
+          <div class="disc-detail">
+            <span class="l de">Aktuelle Höhe: <span class="placeholder">[X,XX m]</span> · Nationale Turniere</span>
+            <span class="l es">Altura actual: <span class="placeholder">[X,XX m]</span> · Concursos nacionales</span>
+            <span class="l en">Current height: <span class="placeholder">[X,XX m]</span> · National competitions</span>
+          </div>
+        </div>
+      </div>
+      <div class="discipline-card secondary">
+        <img src="assets/img/img-06-dressage-grey.jpg" alt="Dressage" style="height:100%; min-height:320px;">
+        <div class="disc-label">
+          <div class="disc-tag">
+            <span class="l de">Ergänzungsdisziplin</span>
+            <span class="l es">Disciplina complementaria</span>
+            <span class="l en">Secondary discipline</span>
+          </div>
+          <div class="disc-name">
+            <span class="l de">Dressur</span>
+            <span class="l es">Doma clásica</span>
+            <span class="l en">Dressage</span>
+          </div>
+          <div class="disc-detail">
+            <span class="l de">Klassische Ausbildung als Basis</span>
+            <span class="l es">Formación clásica como base</span>
+            <span class="l en">Classical training as foundation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HORSES ────────────────────────────────────────────────── -->
+<section id="horses" class="anchor-offset">
+  <div class="section-inner">
+    <p class="section-label">
+      <span class="l de">Meine Pferde</span>
+      <span class="l es">Mis caballos</span>
+      <span class="l en">My horses</span>
+    </p>
+    <h2 class="section-title">
+      <span class="l de">Vier Partner</span>
+      <span class="l es">Cuatro socios</span>
+      <span class="l en">Four partners</span>
+    </h2>
+    <div class="divider"></div>
+    <div class="lb de horses-intro">Meine vier Pferde bilden das Herzstück meiner täglichen Arbeit. Westfälische und niederländische Linien — ein breites Spektrum an Charakteren und Stärken.</div>
+    <div class="lb es horses-intro">Mis cuatro caballos son el núcleo de mi trabajo diario. Líneas westfalianas y neerlandesas — un amplio espectro de caracteres y fortalezas.</div>
+    <div class="lb en horses-intro">My four horses are the heart of my daily work. Westphalian and Dutch lines — a wide range of characters and strengths.</div>
+
+    <div class="horses-grid">
+
+      <div class="horse-card">
+        <div class="horse-number">01 / 04</div>
+        <div class="horse-name">For Thargos</div>
+        <div class="horse-meta">
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+            </span>
+            <span class="horse-meta-val">Westfale</span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Farbe]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Jahr]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+            </span>
+            <span class="horse-meta-val">Donthargos × Aires de Fantasia</span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Disziplin</span><span class="l es">Disciplina</span><span class="l en">Discipline</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Sprung / Dressur / Beides]</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="horse-card">
+        <div class="horse-number">02 / 04</div>
+        <div class="horse-name">For Dynamite</div>
+        <div class="horse-meta">
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+            </span>
+            <span class="horse-meta-val">Westfale</span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Farbe]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Jahr]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+            </span>
+            <span class="horse-meta-val">Donthargos × Aires de Fantasia</span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Besonderes</span><span class="l es">Nota</span><span class="l en">Note</span>
+            </span>
+            <span class="horse-meta-val">
+              <span class="l de">Vollgeschwister von For Thargos</span>
+              <span class="l es">Hermano completo de For Thargos</span>
+              <span class="l en">Full sibling of For Thargos</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="horse-card">
+        <div class="horse-number">03 / 04</div>
+        <div class="horse-name">Undercover W</div>
+        <div class="horse-meta">
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+            </span>
+            <span class="horse-meta-val">KWPN (NL)</span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Farbe]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Jahr]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Vater × Mutter]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Disziplin</span><span class="l es">Disciplina</span><span class="l en">Discipline</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Sprung / Dressur / Beides]</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="horse-card">
+        <div class="horse-number">04 / 04</div>
+        <div class="horse-name">Winphonie</div>
+        <div class="horse-meta">
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Rasse</span><span class="l es">Raza</span><span class="l en">Breed</span>
+            </span>
+            <span class="horse-meta-val">KWPN (NL)</span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Farbe</span><span class="l es">Capa</span><span class="l en">Colour</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Farbe]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Jahrgang</span><span class="l es">Año nacimiento</span><span class="l en">Born</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Jahr]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Abstammung</span><span class="l es">Pedigree</span><span class="l en">Pedigree</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Vater × Mutter]</span></span>
+          </div>
+          <div class="horse-meta-row">
+            <span class="horse-meta-key">
+              <span class="l de">Disziplin</span><span class="l es">Disciplina</span><span class="l en">Discipline</span>
+            </span>
+            <span class="horse-meta-val"><span class="placeholder">[Sprung / Dressur / Beides]</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ───────────────────────────────────────────────── -->
+<section id="gallery" class="anchor-offset">
+  <div class="section-inner">
+    <p class="section-label">
+      <span class="l de">Galerie</span>
+      <span class="l es">Galería</span>
+      <span class="l en">Gallery</span>
+    </p>
+    <h2 class="section-title">
+      <span class="l de">In Aktion</span>
+      <span class="l es">En acción</span>
+      <span class="l en">In action</span>
+    </h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="section-inner">
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="assets/img/img-11-bw-hero.jpg" alt="Portfolio shot">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="assets/img/img-08-jump-flags.jpg" alt="Competition">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="assets/img/img-04-jump-chestnut-red.jpg" alt="Jumping">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="assets/img/img-01-jump-grey.jpg" alt="Grey horse jumping">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="assets/img/img-05-jump-chestnut-mountains.jpg" alt="Mountains backdrop">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="assets/img/img-02-canter-grey.jpg" alt="Canter">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="assets/img/img-07-jump-chestnut-training.jpg" alt="Training">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="assets/img/img-10-jump-grey-red.jpg" alt="Jump">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(8)">
+        <img src="assets/img/img-03-jump-chestnut-orange.jpg" alt="Competition jump">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(9)">
+        <img src="assets/img/img-09-jump-side.jpg" alt="Side view jump">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(10)">
+        <img src="assets/img/img-06-dressage-grey.jpg" alt="Dressage">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LIGHTBOX ─────────────────────────────────────────────── -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <button id="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-nav">
+    <button class="lb-nav-btn" onclick="event.stopPropagation(); moveLightbox(-1)">← Prev</button>
+    <button class="lb-nav-btn" onclick="event.stopPropagation(); moveLightbox(1)">Next →</button>
+  </div>
+  <div id="lightbox-counter"></div>
+</div>
+
+<!-- ─── VIDEOS ────────────────────────────────────────────────── -->
+<section id="videos" class="anchor-offset">
+  <div class="section-inner">
+    <p class="section-label">
+      <span class="l de">Videos</span>
+      <span class="l es">Vídeos</span>
+      <span class="l en">Videos</span>
+    </p>
+    <h2 class="section-title">
+      <span class="l de">Bewegte Bilder</span>
+      <span class="l es">En movimiento</span>
+      <span class="l en">Moving pictures</span>
+    </h2>
+    <div class="divider"></div>
+    <div class="lb de videos-intro">Ausschnitte aus Training und Turnier. Alle Videos stammen aus dem realen Turnierbetrieb und Trainingsalltag.</div>
+    <div class="lb es videos-intro">Extractos de entrenamiento y competición. Todos los vídeos provienen del trabajo diario real.</div>
+    <div class="lb en videos-intro">Highlights from training and competition. All footage is from real-life competition and daily training.</div>
+
+    <div class="videos-grid">
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-08-jump-flags.jpg">
+          <source src="assets/vid/vid-01.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-04-jump-chestnut-red.jpg">
+          <source src="assets/vid/vid-02.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-01-jump-grey.jpg">
+          <source src="assets/vid/vid-03.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-07-jump-chestnut-training.jpg">
+          <source src="assets/vid/vid-04.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-05-jump-chestnut-mountains.jpg">
+          <source src="assets/vid/vid-05.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-02-canter-grey.jpg">
+          <source src="assets/vid/vid-06.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-09-jump-side.jpg">
+          <source src="assets/vid/vid-07.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/img/img-10-jump-grey-red.jpg">
+          <source src="assets/vid/vid-08.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GOALS ─────────────────────────────────────────────────── -->
+<section id="goals" class="anchor-offset">
+  <div class="section-inner">
+    <p class="section-label">
+      <span class="l de">Was ich suche</span>
+      <span class="l es">Lo que busco</span>
+      <span class="l en">What I'm looking for</span>
+    </p>
+    <h2 class="section-title">
+      <span class="l de">Ausbildung auf Spitzenniveau</span>
+      <span class="l es">Formación de élite</span>
+      <span class="l en">Elite-level training</span>
+    </h2>
+    <div class="divider" style="margin: 0 auto 1rem;"></div>
+
+    <div class="goals-grid">
+      <div class="goal-card">
+        <span class="goal-icon">🐎</span>
+        <div class="goal-title">
+          <span class="l de">Springsport-Stage</span>
+          <span class="l es">Stage de salto</span>
+          <span class="l en">Show jumping stage</span>
+        </div>
+        <div class="goal-text">
+          <span class="l de">Ich suche eine Stelle als Working Student oder Stage-Reiterin in einem etablierten Springpferdestall — von 3 Monaten bis langfristig.</span>
+          <span class="l es">Busco un puesto como Working Student o amazona en prácticas en una cuadra de salto consolidada — de 3 meses a largo plazo.</span>
+          <span class="l en">I am looking for a position as a working student or stage rider at an established show jumping stable — from 3 months to long-term.</span>
+        </div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-icon">🏆</span>
+        <div class="goal-title">
+          <span class="l de">Wettkampfentwicklung</span>
+          <span class="l es">Desarrollo competitivo</span>
+          <span class="l en">Competitive development</span>
+        </div>
+        <div class="goal-text">
+          <span class="l de">Mein Ziel ist es, auf <span class="placeholder">[CSI-Level / nationale Liga / ...]</span> zu konkurrieren und meine Pferde gemeinsam mit einem erfahrenen Trainer systematisch weiterzuentwickeln.</span>
+          <span class="l es">Mi objetivo es competir en nivel <span class="placeholder">[CSI / liga nacional / ...]</span> y desarrollar mis caballos de forma sistemática junto a un entrenador experimentado.</span>
+          <span class="l en">My goal is to compete at <span class="placeholder">[CSI level / national league / ...]</span> level and systematically develop my horses alongside an experienced trainer.</span>
+        </div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-icon">📍</span>
+        <div class="goal-title">
+          <span class="l de">Verfügbarkeit</span>
+          <span class="l es">Disponibilidad</span>
+          <span class="l en">Availability</span>
+        </div>
+        <div class="goal-text">
+          <span class="l de">Ab <span class="placeholder">[DATUM]</span> verfügbar. Mallorca als Basis, aber auch bereit für Standorte in Deutschland, Spanien oder anderen Ländern.</span>
+          <span class="l es">Disponible desde <span class="placeholder">[FECHA]</span>. Con base en Mallorca, pero también dispuesta a ubicaciones en Alemania, España u otros países.</span>
+          <span class="l en">Available from <span class="placeholder">[DATE]</span>. Based in Mallorca, but also open to locations in Germany, Spain or other countries.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────── -->
+<section id="contact" class="anchor-offset">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p class="section-label">
+          <span class="l de">Kontakt</span>
+          <span class="l es">Contacto</span>
+          <span class="l en">Contact</span>
+        </p>
+        <h2 class="section-title">
+          <span class="l de">Lass uns<br>sprechen.</span>
+          <span class="l es">Hablemos.</span>
+          <span class="l en">Let's talk.</span>
+        </h2>
+        <div class="divider"></div>
+        <div class="lb de">
+          <p>Ich freue mich über jede Nachricht — ob Anfrage, Einladung oder einfach ein erstes Kennenlernen. Melde dich gerne per E-Mail oder Telefon.</p>
+        </div>
+        <div class="lb es">
+          <p>Estaré encantada de recibir cualquier mensaje — ya sea una consulta, una invitación o simplemente un primer contacto. No dudes en escribirme.</p>
+        </div>
+        <div class="lb en">
+          <p>I welcome any message — whether an enquiry, an invitation, or simply a first introduction. Feel free to reach out by email or phone.</p>
+        </div>
+
+        <div class="contact-details">
+          <div class="contact-row">
+            <div class="contact-icon">✉</div>
+            <div class="contact-val">
+              <strong>Email</strong>
+              <span class="placeholder">[email@example.com]</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">📱</div>
+            <div class="contact-val">
+              <strong>
+                <span class="l de">Telefon / WhatsApp</span>
+                <span class="l es">Teléfono / WhatsApp</span>
+                <span class="l en">Phone / WhatsApp</span>
+              </strong>
+              <span class="placeholder">[+34 / +49 ...]</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">📍</div>
+            <div class="contact-val">
+              <strong>
+                <span class="l de">Standort</span>
+                <span class="l es">Ubicación</span>
+                <span class="l en">Location</span>
+              </strong>
+              <span class="placeholder">[Palma de Mallorca, España]</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">📸</div>
+            <div class="contact-val">
+              <strong>Instagram</strong>
+              <span class="placeholder">[@amelie....]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-photo">
+        <img src="assets/img/img-02-canter-grey.jpg" alt="Amelie on horseback">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <span class="footer-name">
+    <span class="l de">[VORNAME] [NACHNAME] — Springreiterin</span>
+    <span class="l es">[NOMBRE] [APELLIDO] — Amazona</span>
+    <span class="l en">[FIRST NAME] [LAST NAME] — Show Jumper</span>
+  </span>
+  <span class="footer-credit">Foto: © Bruno Fragean</span>
+</footer>
+
+<script>
+  // ─── LANGUAGE SWITCHER ────────────────────────────────────────
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+  }
+
+  // ─── HERO PARALLAX / FADE-IN ─────────────────────────────────
+  window.addEventListener('load', function() {
+    document.getElementById('hero-img').classList.add('loaded');
+  });
+
+  // ─── LIGHTBOX ─────────────────────────────────────────────────
+  const galleryImages = [
+    'assets/img/img-11-bw-hero.jpg',
+    'assets/img/img-08-jump-flags.jpg',
+    'assets/img/img-04-jump-chestnut-red.jpg',
+    'assets/img/img-01-jump-grey.jpg',
+    'assets/img/img-05-jump-chestnut-mountains.jpg',
+    'assets/img/img-02-canter-grey.jpg',
+    'assets/img/img-07-jump-chestnut-training.jpg',
+    'assets/img/img-10-jump-grey-red.jpg',
+    'assets/img/img-03-jump-chestnut-orange.jpg',
+    'assets/img/img-09-jump-side.jpg',
+    'assets/img/img-06-dressage-grey.jpg',
+  ];
+
+  let currentLbIdx = 0;
+
+  function openLightbox(idx) {
+    currentLbIdx = idx;
+    document.getElementById('lightbox-img').src = galleryImages[idx];
+    document.getElementById('lightbox').classList.add('open');
+    updateCounter();
+  }
+
+  function closeLightbox(e) {
+    if (e.target === document.getElementById('lightbox')) {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  }
+
+  function moveLightbox(dir) {
+    currentLbIdx = (currentLbIdx + dir + galleryImages.length) % galleryImages.length;
+    document.getElementById('lightbox-img').src = galleryImages[currentLbIdx];
+    updateCounter();
+  }
+
+  function updateCounter() {
+    document.getElementById('lightbox-counter').textContent =
+      (currentLbIdx + 1) + ' / ' + galleryImages.length;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') moveLightbox(1);
+    if (e.key === 'ArrowLeft')  moveLightbox(-1);
+    if (e.key === 'Escape') lb.classList.remove('open');
+  });
+</script>
+</body>
+</html>
