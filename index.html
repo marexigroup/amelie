@@ -753,6 +753,63 @@
     letter-spacing: 0.06em;
   }
 
+  /* ─── EXPERIENCE ─────────────────────────────────────────────── */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .exp-duration {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .exp-desc { color: var(--mid); font-size: 1rem; line-height: 1.75; }
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .exp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--mid);
+    line-height: 1.55;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-list li:last-child { border-bottom: none; }
+  .exp-list li::before { content: '—'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 0.05em; }
+
+  /* ─── COMPETITION HIGHLIGHTS ─────────────────────────────────── */
+  .comp-intro { max-width: 640px; color: var(--mid); margin-bottom: 3rem; font-size: 1.05rem; }
+  .comp-horses-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3.5rem; margin-bottom: 3.5rem; }
+  .comp-horse-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--ink); margin-bottom: 0.35rem; }
+  .comp-horse-years { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1.25rem; }
+  .comp-results { display: flex; flex-direction: column; }
+  .comp-result-row { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .comp-year { color: var(--muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; min-width: 30px; flex-shrink: 0; }
+  .comp-event { color: var(--mid); font-size: 0.88rem; flex: 1; }
+  .comp-place { font-weight: 700; font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
+  .comp-place.gold    { background: #FDF6DC; color: #7A5E10; }
+  .comp-place.silver  { background: #EFEFEF; color: #4A4A4A; }
+  .comp-place.bronze  { background: #FDF0E4; color: #7A3E10; }
+  .comp-place.champ   { background: var(--ink); color: #fff; }
+  .comp-place.neutral { background: #f3f3f3; color: #888; }
+  .comp-current { border-left: 3px solid var(--gold); padding: 1.75rem 2.25rem; background: var(--cream); }
+  .comp-current-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--ink); margin-bottom: 0.85rem; }
+  .comp-current p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.6rem; }
+  .comp-current p:last-child { margin-bottom: 0; }
+
   /* ─── RESPONSIVE ──────────────────────────────────────────── */
   @media (max-width: 900px) {
     section { padding: 4rem 1.5rem; }
@@ -776,6 +833,9 @@
     .videos-grid { grid-template-columns: 1fr; }
     .goals-grid { grid-template-columns: 1fr; }
 
+    .experience-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .comp-horses-grid { grid-template-columns: 1fr; }
+
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -796,6 +856,18 @@
       <span class="l es">Sobre mí</span>
       <span class="l en">About</span>
       <span class="l fr">À propos</span>
+    </a>
+    <a href="#experience">
+      <span class="l de">Erfahrung</span>
+      <span class="l es">Experiencia</span>
+      <span class="l en">Experience</span>
+      <span class="l fr">Expérience</span>
+    </a>
+    <a href="#achievements">
+      <span class="l de">Erfolge</span>
+      <span class="l es">Logros</span>
+      <span class="l en">Achievements</span>
+      <span class="l fr">Palmarès</span>
     </a>
     <a href="#disciplines">
       <span class="l de">Disziplinen</span>
@@ -964,6 +1036,88 @@
   </div>
 </section>
 
+<!-- ─── EXPERIENCE ──────────────────────────────────────────────── -->
+<section id="experience" class="anchor-offset" style="background:#fff;">
+  <div class="section-inner">
+    <p class="section-label">
+      <span class="l de">Berufserfahrung</span>
+      <span class="l es">Experiencia profesional</span>
+      <span class="l en">Professional Experience</span>
+      <span class="l fr">Expérience professionnelle</span>
+    </p>
+    <h2 class="section-title">
+      <span class="l de">5 Jahre im Stall</span>
+      <span class="l es">5 años en la cuadra</span>
+      <span class="l en">5 Years in the Stable</span>
+      <span class="l fr">5 ans à l'écurie</span>
+    </h2>
+    <div class="divider"></div>
+
+    <div class="experience-grid">
+      <div>
+        <div class="exp-role">
+          <span class="l de">Reitlehrerin &amp; Stallassistentin</span>
+          <span class="l es">Instructora de equitación &amp; asistente de cuadra</span>
+          <span class="l en">Riding Instructor &amp; Stable Assistant</span>
+          <span class="l fr">Instructrice d'équitation &amp; assistante d'écurie</span>
+        </div>
+        <div class="exp-duration">
+          <span class="l de">5 Jahre · Selber Betrieb</span>
+          <span class="l es">5 años · Mismo centro</span>
+          <span class="l en">5 years · Same stable</span>
+          <span class="l fr">5 ans · Même centre</span>
+        </div>
+        <p class="exp-desc">
+          <span class="l de">Ich habe fünf Jahre lang in demselben Reitstall gearbeitet und praktische Erfahrung in Pferdepflege, Reiten und täglichem Stallbetrieb gesammelt. Diese Zeit hat mich gelehrt, verantwortungsbewusst, selbstständig und geduldig mit unterschiedlichen Pferdetypen zu arbeiten.</span>
+          <span class="l es">He trabajado cinco años en el mismo centro ecuestre, adquiriendo experiencia práctica en el cuidado del caballo, la equitación y la gestión diaria de la cuadra. Esta experiencia me ha enseñado a trabajar de forma responsable, independiente y paciente con diferentes tipos de caballos.</span>
+          <span class="l en">I worked for five years at the same riding stable, gaining practical experience in horse care, riding and daily stable management. This experience taught me to work responsibly, independently and patiently with different types of horses.</span>
+          <span class="l fr">J'ai travaillé pendant cinq ans dans le même centre équestre, acquérant une expérience pratique en soins aux chevaux, équitation et gestion quotidienne des écuries. Cette expérience m'a appris à travailler de manière responsable, indépendante et patiente avec différents types de chevaux.</span>
+        </p>
+      </div>
+      <div>
+        <ul class="exp-list">
+          <li>
+            <span class="l de">Erteilen von Reitstunden für Schüler unterschiedlicher Niveaus</span>
+            <span class="l es">Impartir clases de equitación a alumnos de diferentes niveles</span>
+            <span class="l en">Teaching riding lessons to students of different levels</span>
+            <span class="l fr">Cours d'équitation à des élèves de différents niveaux</span>
+          </li>
+          <li>
+            <span class="l de">Reiten und Ausbilden von Pferden</span>
+            <span class="l es">Montar y trabajar caballos</span>
+            <span class="l en">Riding and schooling horses</span>
+            <span class="l fr">Monter et travailler les chevaux</span>
+          </li>
+          <li>
+            <span class="l de">Arbeit mit jungen und unerfahrenen Pferden</span>
+            <span class="l es">Trabajo con caballos jóvenes e inexpertos</span>
+            <span class="l en">Working with young and inexperienced horses</span>
+            <span class="l fr">Travail avec des jeunes chevaux et des chevaux inexpérimentés</span>
+          </li>
+          <li>
+            <span class="l de">Tägliche Pferdepflege, Fütterung und allgemeine Stallarbeiten</span>
+            <span class="l es">Cuidado diario, alimentación y tareas generales de cuadra</span>
+            <span class="l en">Daily horse care, feeding and general stable duties</span>
+            <span class="l fr">Soins quotidiens, alimentation et tâches générales d'écurie</span>
+          </li>
+          <li>
+            <span class="l de">Vorbereitung von Pferden für Training und Wettkämpfe</span>
+            <span class="l es">Preparación de caballos para el entrenamiento y las competiciones</span>
+            <span class="l en">Preparing horses for training and competitions</span>
+            <span class="l fr">Préparation des chevaux pour l'entraînement et les compétitions</span>
+          </li>
+          <li>
+            <span class="l de">Eigenverantwortliche Organisation des täglichen Stallbetriebs</span>
+            <span class="l es">Gestión independiente de las rutinas diarias de la cuadra</span>
+            <span class="l en">Independently managing daily stable routines</span>
+            <span class="l fr">Gestion autonome des routines quotidiennes de l'écurie</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── DISCIPLINES ────────────────────────────────────────────── -->
 <section id="disciplines" class="anchor-offset">
   <div class="section-inner">
@@ -1031,6 +1185,224 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ─── COMPETITION HIGHLIGHTS ──────────────────────────────────── -->
+<section id="achievements" class="anchor-offset" style="background:var(--warm);">
+  <div class="section-inner">
+    <p class="section-label">
+      <span class="l de">Wettkampfbilanz</span>
+      <span class="l es">Resultados</span>
+      <span class="l en">Achievements</span>
+      <span class="l fr">Palmarès</span>
+    </p>
+    <h2 class="section-title">
+      <span class="l de">Titel &amp; Platzierungen</span>
+      <span class="l es">Títulos y podios</span>
+      <span class="l en">Titles &amp; Placings</span>
+      <span class="l fr">Titres &amp; Podiums</span>
+    </h2>
+    <div class="divider"></div>
+
+    <p class="comp-intro">
+      <span class="l de">Über die Jahre hinweg habe ich erfolgreich an regionalen Meisterschaften und Balearenmeisterschaften teilgenommen und mehrere Titel sowie Podiumsplatzierungen erreicht.</span>
+      <span class="l es">A lo largo de los años he competido con éxito en campeonatos regionales y de Baleares, logrando varios títulos y podios.</span>
+      <span class="l en">Over the years, I have competed successfully in regional and Balearic championships, achieving several titles and podium finishes.</span>
+      <span class="l fr">Au fil des années, j'ai participé avec succès aux championnats régionaux et des Baléares, obtenant plusieurs titres et podiums.</span>
+    </p>
+
+    <div class="comp-horses-grid">
+
+      <!-- ── Aires de Fantasia 2015–2019 ── -->
+      <div class="comp-horse-block">
+        <div class="comp-horse-years">2015 – 2019</div>
+        <div class="comp-horse-name">Aires de Fantasia</div>
+        <div class="comp-results">
+
+          <div class="comp-result-row">
+            <span class="comp-year">2015</span>
+            <span class="comp-event">
+              <span class="l de">Kinderchampionat Mallorca</span>
+              <span class="l es">Camp. Infantil Mallorca</span>
+              <span class="l en">Mallorca Children's Championship</span>
+              <span class="l fr">Champ. Enfants Majorque</span>
+            </span>
+            <span class="comp-place silver">2.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2015</span>
+            <span class="comp-event">
+              <span class="l de">Balearenmeisterschaft Kinder</span>
+              <span class="l es">Camp. Infantil Baleares</span>
+              <span class="l en">Balearic Children's Championship</span>
+              <span class="l fr">Champ. Enfants Baléares</span>
+            </span>
+            <span class="comp-place silver">2.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2016</span>
+            <span class="comp-event">S.A.R. Infanta Elena</span>
+            <span class="comp-place neutral">5.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2017</span>
+            <span class="comp-event">
+              <span class="l de">Balearenmeisterschaft Junioren</span>
+              <span class="l es">Camp. Junior Baleares</span>
+              <span class="l en">Balearic Junior Championship</span>
+              <span class="l fr">Champ. Junior Baléares</span>
+            </span>
+            <span class="comp-place silver">2.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2018</span>
+            <span class="comp-event">
+              <span class="l de">Juniorenmeisterschaft Mallorca</span>
+              <span class="l es">Camp. Junior Mallorca</span>
+              <span class="l en">Mallorca Junior Championship</span>
+              <span class="l fr">Champ. Junior Majorque</span>
+            </span>
+            <span class="comp-place bronze">3.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2018</span>
+            <span class="comp-event">
+              <span class="l de">Springpferde-Liga 1,10 m</span>
+              <span class="l es">Liga de Salto 1,10 m</span>
+              <span class="l en">1.10 m Show Jumping League</span>
+              <span class="l fr">Ligue de Saut 1,10 m</span>
+            </span>
+            <span class="comp-place gold">1.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2019</span>
+            <span class="comp-event">
+              <span class="l de">Juniorenmeisterin Mallorca</span>
+              <span class="l es">Campeona Junior Mallorca</span>
+              <span class="l en">Mallorca Junior Champion</span>
+              <span class="l fr">Championne Junior Majorque</span>
+            </span>
+            <span class="comp-place champ">
+              <span class="l de">Meisterin</span>
+              <span class="l es">Campeona</span>
+              <span class="l en">Champion</span>
+              <span class="l fr">Championne</span>
+            </span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2019</span>
+            <span class="comp-event">
+              <span class="l de">Balearenmeisterin Junioren</span>
+              <span class="l es">Campeona Junior Baleares</span>
+              <span class="l en">Balearic Junior Champion</span>
+              <span class="l fr">Championne Junior Baléares</span>
+            </span>
+            <span class="comp-place champ">
+              <span class="l de">Meisterin</span>
+              <span class="l es">Campeona</span>
+              <span class="l en">Champion</span>
+              <span class="l fr">Championne</span>
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Madame de Semilly 2021–2022 ── -->
+      <div class="comp-horse-block">
+        <div class="comp-horse-years">2021 – 2022</div>
+        <div class="comp-horse-name">Madame de Semilly</div>
+        <div class="comp-results">
+
+          <div class="comp-result-row">
+            <span class="comp-year">2021</span>
+            <span class="comp-event">
+              <span class="l de">Youngster-Meisterin Mallorca (5-Jährige)</span>
+              <span class="l es">Campeona JC Mallorca (5 años)</span>
+              <span class="l en">Mallorca Young Horse Champion (5-yr)</span>
+              <span class="l fr">Championne JC Majorque (5 ans)</span>
+            </span>
+            <span class="comp-place champ">
+              <span class="l de">Meisterin</span>
+              <span class="l es">Campeona</span>
+              <span class="l en">Champion</span>
+              <span class="l fr">Championne</span>
+            </span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2021</span>
+            <span class="comp-event">
+              <span class="l de">Balearenmeisterschaft Junge Pferde (5-J.)</span>
+              <span class="l es">Camp. JC Baleares (5 años)</span>
+              <span class="l en">Balearic Young Horse Championship (5-yr)</span>
+              <span class="l fr">Champ. JC Baléares (5 ans)</span>
+            </span>
+            <span class="comp-place silver">2.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2022</span>
+            <span class="comp-event">
+              <span class="l de">Youngster-Meisterschaft Mallorca (6-Jährige)</span>
+              <span class="l es">Camp. JC Mallorca (6 años)</span>
+              <span class="l en">Mallorca Young Horse Championship (6-yr)</span>
+              <span class="l fr">Champ. JC Majorque (6 ans)</span>
+            </span>
+            <span class="comp-place silver">2.</span>
+          </div>
+
+          <div class="comp-result-row">
+            <span class="comp-year">2022</span>
+            <span class="comp-event">
+              <span class="l de">Balearenmeisterin Junge Pferde (6-Jährige)</span>
+              <span class="l es">Campeona JC Baleares (6 años)</span>
+              <span class="l en">Balearic Young Horse Champion (6-yr)</span>
+              <span class="l fr">Championne JC Baléares (6 ans)</span>
+            </span>
+            <span class="comp-place champ">
+              <span class="l de">Meisterin</span>
+              <span class="l es">Campeona</span>
+              <span class="l en">Champion</span>
+              <span class="l fr">Championne</span>
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Current project -->
+    <div class="comp-current">
+      <div class="comp-current-title">
+        <span class="l de">Mein aktuelles Projekt — Junges Pferd</span>
+        <span class="l es">Mi proyecto actual — Caballo joven</span>
+        <span class="l en">My Current Project — Young Horse Development</span>
+        <span class="l fr">Mon projet actuel — Développement jeune cheval</span>
+      </div>
+      <p>
+        <span class="l de">Derzeit beginne ich mein eigenes 3-jähriges Pferd anzureiten und führe das frühe Training selbst durch. Mein Ziel ist es, ihn geduldig und korrekt zu entwickeln und eine solide Grundlage für seine Zukunft als Springpferd zu legen.</span>
+        <span class="l es">Actualmente estoy empezando a montar mi propio caballo joven de 3 años, realizando el trabajo inicial yo misma. Mi objetivo es desarrollarlo con paciencia y corrección, construyendo una base sólida para su futuro en el salto.</span>
+        <span class="l en">I am currently starting my own 3-year-old young horse under saddle, doing the early training myself. My goal is to develop him patiently and correctly, building a solid foundation for his future as a show jumping horse.</span>
+        <span class="l fr">Je débourre actuellement mon propre jeune cheval de 3 ans, en gérant moi-même le travail initial. Mon objectif est de le développer avec patience et rigueur, en construisant une base solide pour son avenir en saut d'obstacles.</span>
+      </p>
+      <p>
+        <span class="l de">Wenn alles nach Plan läuft und er bereit ist, hoffe ich, ihn 2027 in die 4-Jährige-Youngster-Prüfungen einzuführen.</span>
+        <span class="l es">Si todo va según lo planeado y está listo, espero presentarlo en las pruebas de jóvenes caballos de 4 años en 2027.</span>
+        <span class="l en">If everything goes according to plan and he is ready, I hope to introduce him to the 4-year-old young horse competitions in 2027.</span>
+        <span class="l fr">Si tout se passe comme prévu et qu'il est prêt, j'espère le présenter aux épreuves de jeunes chevaux de 4 ans en 2027.</span>
+      </p>
+    </div>
+
   </div>
 </section>
 
